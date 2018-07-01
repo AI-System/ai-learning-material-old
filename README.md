@@ -3,7 +3,7 @@ Ai Learning Material
 
 ### Basic Python
 
-- [sw](http://www.baidu.com)
-- [sw](http://www.baidu.com)
-- [sw](http://www.baidu.com)
-- [sw](http://www.baidu.com)
+- [data-types and operators](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/Basic-Python/1.data-types%26operators.md)
+- [control-flow](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/Basic-Python/2.control-flow.md)
+- [functions](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/Basic-Python/3.functions.md)
+- [scripting](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/Basic-Python/4.scripting.md)
