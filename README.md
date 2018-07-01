@@ -10,4 +10,4 @@ Ai Learning Material
 
 ### Notes
 
-- Some code of Basic Python are coming from [Udacity](https://cn.udacity.com/courses/all), and the copyright belongs to Udacity. Here only for learning purposes.
+- Some code and notes of Basic Python are coming from [Udacity](https://cn.udacity.com/courses/all), and the copyright belongs to Udacity. Here only for learning purposes.
