@@ -11,7 +11,7 @@ Ai Learning Material
 
 - [Scripting](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/Basic-Python/4.scripting.md)
 
-- Comments: some code and notes of this part are coming from [Udacity](https://cn.udacity.com/courses/all). Here only for learning purpose.
+- Comments: some code and notes of this part are organized from [Udacity](https://cn.udacity.com/courses/all). Here only for learning purpose.
 
 ### License
 
