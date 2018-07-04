@@ -15,7 +15,7 @@ Ai Learning Material
 
 ### Projects
 
-- [RobotController](https://github.com/AI-System/AI-LEARNING-MATERIAL/tree/master/Projects/RobotController)
+- [RobotController](https://github.com/AI-System/AI-LEARNING-MATERIAL/tree/master/Projects/RobotController/README.md)
 
 ### License
 
