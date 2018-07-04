@@ -13,6 +13,10 @@ Ai Learning Material
 
 - Comments: some code and notes of this part are organized from [Udacity](https://cn.udacity.com/courses/all). Here only for learning purpose.
 
+### Projects
+
+- [RobotController](https://github.com/AI-System/AI-LEARNING-MATERIAL/tree/master/Projects/RobotController)
+
 ### License
 
 [MIT](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/LICENSE)
