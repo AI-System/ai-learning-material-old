@@ -11848,11 +11848,12 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>maze-id 1-1530709482
-[[0, 0, 0, 0, 0, 2, 3],
- [1, 2, 2, 2, 0, 2, 0],
- [2, 0, 0, 0, 0, 2, 0],
- [2, 2, 2, 2, 0, 0, 0]]
+<pre>maze-id 1-1531140274
+[[3, 2, 2, 2, 2, 2, 2, 2, 1],
+ [0, 0, 2, 2, 2, 2, 2, 0, 0],
+ [2, 0, 0, 2, 2, 2, 0, 0, 2],
+ [2, 2, 0, 0, 2, 0, 0, 2, 2],
+ [2, 2, 2, 0, 0, 0, 2, 2, 2]]
 </pre>
 </div>
 </div>
@@ -11877,17 +11878,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO 1模拟环境的行数</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span>
 
 <span class="c1">#TODO 2模拟环境的列数</span>
-<span class="n">columns</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1">#TODO 3取出模拟环境第三行第六列的元素</span>
-<span class="n">row_3_col_6</span> <span class="o">=</span> <span class="n">env_data</span><span class="p">[</span><span class="n">rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">row_3_col_6</span> <span class="o">=</span> <span class="n">env_data</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;迷宫共有&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="s2">&quot;行&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;列，第三行第六列的元素是&quot;</span><span class="p">,</span> <span class="n">row_3_col_6</span><span class="p">)</span>
 </pre></div>
@@ -11906,7 +11907,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>迷宫共有 3 行 6 列，第三行第六列的元素是 2
+<pre>迷宫共有 5 行 9 列，第三行第六列的元素是 2
 </pre>
 </div>
 </div>
@@ -11930,30 +11931,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO 4计算模拟环境中，第一行的的障碍物个数。</span>
-<span class="n">number_of_barriers_row1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">number_of_barriers_row1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="c1">#TODO 5计算模拟环境中，第三列的的障碍物个数。</span>
-<span class="n">number_of_barriers_col3</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># 外层循环</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)):</span>
-    <span class="c1"># 获取每行数据</span>
-    <span class="n">lineItem</span> <span class="o">=</span> <span class="n">env_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> 
-    <span class="c1"># 遍历第一行</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># 循环第一行中的内容</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lineItem</span><span class="p">)):</span>
-            <span class="c1"># 符合条件后累加第一行障碍物的数字</span>
-            <span class="k">if</span> <span class="n">lineItem</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">number_of_barriers_row1</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="c1"># 处理所有第三列的数据, 第三列索引为2</span>
-    <span class="k">if</span> <span class="n">lineItem</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">number_of_barriers_col3</span> <span class="o">+=</span> <span class="mi">1</span>
-        
+<span class="n">number_of_barriers_col3</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">env_data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">))</span> <span class="k">if</span> <span class="n">env_data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;迷宫中，第一行共有&quot;</span><span class="p">,</span> <span class="n">number_of_barriers_row1</span><span class="p">,</span> <span class="s2">&quot;个障碍物，第三列共有&quot;</span><span class="p">,</span> <span class="n">number_of_barriers_col3</span><span class="p">,</span> <span class="s2">&quot;个障碍物。&quot;</span><span class="p">)</span>
 </pre></div>
@@ -11997,7 +11982,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO 6按照上述要求创建字典</span>
@@ -12006,8 +11991,11 @@ div#notebook {
   <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  
 <span class="p">}</span> 
 
-<span class="c1">#TODO 7保存机器人当前的位置</span>
-<span class="n">robot_current_loc</span> <span class="o">=</span> <span class="n">loc_map</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+<span class="c1"># 封装获取机器人当前的位置的函数</span>
+<span class="k">def</span> <span class="nf">get_loc</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">loc_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+
+<span class="n">robot_current_loc</span> <span class="o">=</span> <span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">robot_current_loc</span><span class="p">)</span>
 </pre></div>
@@ -12062,7 +12050,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_move_valid_sepcial</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
@@ -12074,53 +12062,23 @@ div#notebook {
 <span class="sd">    loc -- tuple, robots current location</span>
 <span class="sd">    act -- string, robots meant action</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># 取出参数中的两个值 y代表行，x代表列</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># print(&#39;y: &#39; + str(y))</span>
-    <span class="c1"># print(&#39;x: &#39; + str(x))</span>
+    <span class="c1"># 获取行x 和列y</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span>
     
-    <span class="c1"># 边界值限定</span>
-    <span class="n">x_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">y_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="c1"># print(&#39;x_max_index: &#39; + str(x_max_index)) # 8</span>
-    <span class="c1"># print(&#39;y_max_index: &#39; + str(y_max_index)) # 4</span>
+    <span class="c1"># 获取总行数rows 和 总列数columns</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     
-    <span class="c1"># 判断·上面·是否有值并且是否存在障碍物</span>
     <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u ......&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">])</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·下面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d ......&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">])</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">y_max_index</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·左面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·右面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">x_max_index</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
     
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid_sepcial</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;u&#39;</span><span class="p">))</span> <span class="c1"># False</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid_sepcial</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="c1"># True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid_sepcial</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;l&#39;</span><span class="p">))</span> <span class="c1"># False</span>
@@ -12141,12 +12099,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[3, 2, 2, 2, 2, 2, 2, 2, 1], [0, 0, 2, 2, 2, 2, 2, 0, 0], [2, 0, 0, 2, 2, 2, 0, 0, 2], [2, 2, 0, 0, 2, 0, 0, 2, 2], [2, 2, 2, 0, 0, 0, 2, 2, 2]]
-u ......
-2
-False
-d ......
-0
+<pre>False
 True
 False
 False
@@ -12170,7 +12123,7 @@ False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
@@ -12183,46 +12136,37 @@ False
 <span class="sd">    loc -- tuple, robots current location</span>
 <span class="sd">    act -- string, robots meant action</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># 取出参数中的两个值 y代表行，x代表列</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># 边界值限定</span>
-    <span class="n">x_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">y_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    
-    <span class="c1"># 判断·上面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·下面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">y_max_index</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·左面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># 判断·右面·是否有值并且是否存在障碍物</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">x_max_index</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">is_move_valid_sepcial</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;u&#39;</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;l&#39;</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span> <span class="c1"># False</span>
  
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+True
+False
+False
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12244,9 +12188,8 @@ False
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong> （请在这里填写你的回答）</p>
 <ol>
-<li>一个是引用顶级作用域中的值，一个是引用参数传递过来的值</li>
-<li>在函数之外定义的变量依然可以在函数内访问，而函数内的变量或参数只能用于函数内部使用</li>
-<li>在函数内部，不能修改函数外部的变量如外部的<code>env_data</code>，否则会报错</li>
+<li>一个是引用顶级作用域中的值，一个是引用参数传递过来的值，两者的本质区别就是在于作用域不同。</li>
+<li>在函数之外定义的变量依然可以在函数内访问或修改，而函数内的变量或参数只能用于函数内部使用。</li>
 </ol>
 
 </div>
@@ -12266,47 +12209,16 @@ False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## TODO 10 从头定义、实现你的函数</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">acts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">]</span>
 
-<span class="c1"># 重用的函数</span>
-
-<span class="c1"># 要求的函数</span>
 <span class="k">def</span> <span class="nf">valid_actions</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
-    <span class="c1"># 取出参数中的两个值 y代表行，x代表列</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># 边界值限定</span>
-    <span class="n">x_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">y_max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    
-    <span class="c1"># 用于最后盛放数组</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span> 
-    
-    <span class="c1"># 判断是否可上 u</span>
-    <span class="k">if</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span> 
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>
-    
-    
-    <span class="c1"># 判断是否可下 d</span>
-    <span class="k">if</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">y_max_index</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span> 
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># 判断是否可左 l</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span> 
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>                              
-    
-    <span class="c1"># 判断是否可右 r</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">x_max_index</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">env_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span> 
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>  
-    <span class="k">return</span> <span class="n">result</span>
-                                 
-                                 
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">acts</span> <span class="k">if</span> <span class="n">is_move_valid</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">x</span><span class="p">)]</span>
+                   
 <span class="n">res</span> <span class="o">=</span> <span class="n">valid_actions</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="c1"># [&#39;d&#39;, &#39;r&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="c1"># [&#39;d&#39;]</span>
 </pre></div>
 
 </div>
@@ -12323,7 +12235,7 @@ False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;d&#39;, &#39;r&#39;]
+<pre>[&#39;d&#39;]
 </pre>
 </div>
 </div>
@@ -12345,33 +12257,17 @@ False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##TODO 11 从头定义、实现你的函数 </span>
-<span class="c1">## 此函数实现，不考虑受虚拟位置约束</span>
-<span class="k">def</span> <span class="nf">move_robot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
-    <span class="c1"># 取出参数中的两个值 y代表行，x代表列</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
-    
-    <span class="c1"># 向上</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span>
-        <span class="n">new_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        
-    <span class="c1"># 向下</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
-        <span class="n">new_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        
-    <span class="c1"># 向左</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
-        <span class="n">new_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        
-    <span class="c1"># 向右</span>
-    <span class="k">if</span> <span class="n">act</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
-        <span class="n">new_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">new_loc</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">move_robot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
+    <span class="n">move_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">move_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">act</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">move_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">act</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">move_robot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;u&#39;</span><span class="p">))</span> <span class="c1"># (0, 1)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">move_robot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;d&#39;</span><span class="p">))</span> <span class="c1"># (2, 1)</span>
@@ -12425,7 +12321,7 @@ False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##TODO 12 从头实现你的函数</span>
@@ -12447,14 +12343,15 @@ False
         <span class="n">act</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">avaliable_move</span><span class="p">)</span> <span class="c1"># 此处返回一个可行的动作</span>
         <span class="c1"># print(act)</span>
         <span class="n">updated_loc</span> <span class="o">=</span> <span class="n">move_robot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">updated_loc</span><span class="p">)</span>
+        <span class="c1"># print(updated_loc)</span>
         <span class="c1"># 判断宝藏是否在更新后的位置中</span>
         <span class="k">if</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">updated_loc</span><span class="p">:</span>
             <span class="n">is_last</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;在第n个回合找到宝藏！&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;在第&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;个回合找到宝藏!&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;是否在300回合找到了宝藏： &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">is_last</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;在300回合内&#39;</span> <span class="o">+</span>  <span class="p">(</span><span class="s1">&#39; 找到了 &#39;</span> <span class="k">if</span> <span class="n">is_last</span> <span class="k">else</span> <span class="s1">&#39; 没找到 &#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="s1">&#39;宝藏&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12464,11 +12361,11 @@ False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 运行</span>
-<span class="n">robot_current_loc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">robot_current_loc</span> <span class="o">=</span> <span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
 <span class="n">random_choose_actions</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span> <span class="n">robot_current_loc</span><span class="p">)</span>
 </pre></div>
 
@@ -12486,307 +12383,7 @@ False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(1, 0)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(1, 0)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(1, 0)
-(2, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(2, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(2, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(2, 1)
-(0, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(1, 0)
-(2, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(2, 1)
-(0, 1)
-(0, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(0, 1)
-(0, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(1, 0)
-(2, 1)
-(1, 0)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(0, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(2, 1)
-(2, 1)
-(2, 1)
-(1, 0)
-(0, 1)
-(1, 0)
-(1, 0)
-(1, 0)
-(1, 0)
-(1, 0)
-(1, 0)
-(0, 1)
-是否在300回合找到了宝藏： False
+<pre>在300回合内 没找到 宝藏
 </pre>
 </div>
 </div>
