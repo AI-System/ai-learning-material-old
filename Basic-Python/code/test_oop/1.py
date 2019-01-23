@@ -8,7 +8,8 @@ class Person:
   def fun(self):
     print('fun...')
   def getInfo(self):
-    print('name: ', self.name, ' age: ', self.age)
+    # print('name: ', self.name, ' age: ', self.age)
+    print('my name: %s; age: %d'%(self.name, self.age))
   
 print(Person) # <class '__main__.Person'> # __main__ 表示在主模块下执行
 
@@ -28,6 +29,6 @@ p.fun() # fun...
 p.name='lisi'
 p.age=10
 
-p.getInfo() # name:  lisi  age:  10
+p.getInfo() # name:  lisi  age:  10 # my name: lisi; age: 10
 print(p.name) # lisi # 同样的效果
 print(p.age) # 10 # 同样的效果
