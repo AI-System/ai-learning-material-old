@@ -43,7 +43,7 @@ class Plane:
   def fire(self):
     # 子弹的位置是从飞机的零点 + 一半飞机的长度(106/2=53) 如果不准确可根据图片来微调
     self.bullet_list.append(Bullet(self.screen, self.x + 53, self.y))
-    print(len(self.bullet_list))
+    # print(len(self.bullet_list)) # test bullet number, prevent mem leak!
 
 # 创建炮弹类
 class Bullet:
