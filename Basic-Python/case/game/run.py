@@ -16,11 +16,11 @@ class Plane:
   
   def move(self, flag):
     ''' flag True 左, False 右'''
-    self.x -= 5
+    print("flag:", flag)
     if flag:
-      self.x -= 5
+      self.x -= 10
     else:
-      self.x += 5
+      self.x += 10
 
 # 键盘控制函数
 def key_control(plane):
@@ -48,22 +48,25 @@ def main():
   screen = pygame.display.set_mode((512, 568), 0, 0)
   # 创建游戏背景
   bg = pygame.image.load("./images/bg2.jpg")
-  m = -968 # 图片高 1536 , 画布高 568 , 将图片置地, -968是初始化时候的坐标位置 即从零点向上移动968像素, 最终底部对齐的效果
+  # 图片高 1536 , 画布高 568 , 将图片置底, 
+  # -968是初始化时候的坐标位置 即从零点向上移动968像素, 最终底部对齐的效果
+  m = -968 
   # 注：因为涉及到无缝滚动, 所以画布是两张图片拼起来的, 一张图片的高度是 1536 / 2 = 768
   # 创建飞机对象
   plane = Plane(screen)
   while True:
-    # 绘制画面
-    screen.blit(bg, (0, m))
-    m += 2 # 不停向下移动
-    if m >= -200: # 当移动完一张图片的位置之后，那么重新绘制 -968 + 768 = -200
-      m = -968
+      # 绘制画面
+      screen.blit(bg,(0,m))
+      m += 2 # 不停向下移动
+      if m >= -200: # 当移动完一张图片的位置之后，那么重新绘制 -968 + 768 = -200
+        m = -968
+      plane.display()
       # 键盘控制
       key_control(plane)
       # 更新显示
       pygame.display.update()
       # 定时显示
-      time.sleep(0.033)
+      time.sleep(0.03)
 
 ### 判断当前是否是主程序，如果是主程序则调用
 if __name__ == '__main__':
