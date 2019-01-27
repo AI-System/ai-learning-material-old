@@ -1,6 +1,6 @@
 # 写操作
 
-f = open('./c.txt', 'w')
+f = open('./c.txt', 'w') # w 是清空写
 # 一次一次写
 f.write('Hello c1\n')
 f.write('Hello c2\n')
