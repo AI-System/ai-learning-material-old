@@ -2,26 +2,64 @@ import pygame
 from pygame.locals import *
 import time
 
-# 创建飞机对象
+# 创建飞机类
 class Plane:
+  # 初始化
   def __init__(self, screen):
     self.x = 200
     self.y = 400
     self.screen = screen
     self.image = pygame.image.load("./images/me.png")
+    self.bullet_list = [] # 用于存放子弹的容器
 
+  # 显示飞机和子弹
   def display(self):
-    ''' 绘制飞机功能 '''
+    # 绘制子弹
+    for b in self.bullet_list:
+      b.display()
+      b.move()
+
+    # 绘制飞机功能
     self.screen.blit(self.image, (self.x, self.y))
   
+  # 飞机移动
   def move(self, flag):
-    # flag True 左, False 右
+    # 移动控制：flag True 左, False 右
     if flag:
       self.x -= 12
     else:
       self.x += 12
+    # 边界控制
+    if self.x < -53:
+      # 只让飞机出去一半位置
+      self.x = -53
+    if self.x > 459:
+      # 512 - 106/2 = 459
+      self.x = 459
+      
+  # 发射子弹
+  def fire(self):
+    # 子弹的位置是从飞机的零点 + 一半飞机的长度(106/2=53)
+    self.bullet_list.append(Bullet(self.screen, self.x + 53, self.y))
 
-# 键盘控制函数
+# 创建炮弹类
+class Bullet:
+  # 初始化
+  def __init__(self, screen, x, y):
+    self.x = x
+    self.y = y
+    self.screen = screen
+    self.image = pygame.image.load("./images/pd.png")
+
+  # 子弹显示
+  def display(self):
+    self.screen.blit(self.image, (self.x, self.y))
+
+  # 移动功能 只在y轴y
+  def move(self):
+    self.y -= 24 # 向上移动 24
+
+# 键盘控制
 def key_control(plane):
     # 执行退出操作
     for event in pygame.event.get():
@@ -36,8 +74,9 @@ def key_control(plane):
     elif pressed_keys[K_RIGHT] or pressed_keys[K_d]:
       plane.move(False)
 
+    # 空格键 发射功能
     if pressed_keys[K_SPACE]:
-      print('space ...')
+      plane.fire()
 
 def main():
   # 设置游戏主界面, 创建游戏窗口 512宽，568高 标志 0 深度 0
