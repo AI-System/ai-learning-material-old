@@ -17,7 +17,9 @@ class Plane:
     # 绘制子弹
     for b in self.bullet_list:
       b.display()
-      b.move()
+      if b.move():
+        # 此处做一个优化, 如果子弹出了屏幕, 那么弹夹里面移除该子弹, 防止内存泄漏
+        self.bullet_list.remove(b)
 
     # 绘制飞机功能
     self.screen.blit(self.image, (self.x, self.y))
@@ -36,11 +38,12 @@ class Plane:
     if self.x > 459:
       # 512 - 106/2 = 459
       self.x = 459
-      
+
   # 发射子弹
   def fire(self):
-    # 子弹的位置是从飞机的零点 + 一半飞机的长度(106/2=53)
+    # 子弹的位置是从飞机的零点 + 一半飞机的长度(106/2=53) 如果不准确可根据图片来微调
     self.bullet_list.append(Bullet(self.screen, self.x + 53, self.y))
+    print(len(self.bullet_list))
 
 # 创建炮弹类
 class Bullet:
@@ -55,9 +58,12 @@ class Bullet:
   def display(self):
     self.screen.blit(self.image, (self.x, self.y))
 
-  # 移动功能 只在y轴y
+  # 移动功能 只在y轴y 子弹移动时优化处理
   def move(self):
     self.y -= 24 # 向上移动 24
+    if self.y <= -17:
+      # 子弹图片的高度是17，此时子弹出了屏幕
+      return True
 
 # 键盘控制
 def key_control(plane):
@@ -91,7 +97,7 @@ def main():
   plane = Plane(screen)
   while True:
       # 绘制画面
-      screen.blit(bg,(0,m))
+      screen.blit(bg, (0,m))
       m += 2 # 不停向下移动
       if m >= -200: # 当移动完一张图片的位置之后，那么重新绘制 -968 + 768 = -200
         m = -968
