@@ -15,29 +15,25 @@ class Plane:
     self.screen.blit(self.image, (self.x, self.y))
   
   def move(self, flag):
-    ''' flag True 左, False 右'''
-    print("flag:", flag)
+    # flag True 左, False 右
     if flag:
-      self.x -= 10
+      self.x -= 12
     else:
-      self.x += 10
+      self.x += 12
 
 # 键盘控制函数
 def key_control(plane):
-    ''' 键盘控制函数 '''
     # 执行退出操作
     for event in pygame.event.get():
-      if event.type == QUIT:
-        print('exit()')
+      if event.type == QUIT: 
+        # 匹配点击窗口的关闭按钮时触发
         exit()
     
     # 获取按键信息
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[K_LEFT] or pressed_keys[K_a]:
-      print('left ...')
       plane.move(True)
     elif pressed_keys[K_RIGHT] or pressed_keys[K_d]:
-      print('right ...')
       plane.move(False)
 
     if pressed_keys[K_SPACE]:
