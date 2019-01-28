@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-import time
+import time, random
 
 # 创建飞机类
 class Plane:
@@ -65,6 +65,45 @@ class Bullet:
       # 子弹图片的高度是17，此时子弹出了屏幕
       return True
 
+# 创建敌机类
+class Enemy:
+  # 初始化
+  def __init__(self, screen):
+    # 敌机x轴随机 0 ~ 408 px的范围内
+    self.x = random.choice(range(409)) # 0 ~ 408 之间随机
+    self.y = -75
+    self.screen = screen
+    self.image = pygame.image.load("./images/e2.png")
+
+  # 子弹显示
+  def display(self):
+    self.screen.blit(self.image, (self.x, self.y))
+
+  # 移动功能 敌机向下移动
+  def move(self, plane):
+    self.y += 5 # 向上移动 24
+    # 循环飞机子弹，做碰撞检测
+    for b in plane.bullet_list:
+        if b.x > self.x + 12 and b.x < self.x + 92 and b.y > self.y + 20 and b.y < self.y + 60:
+            plane.bullet_list.remove(b) # 当前敌机删除
+            return True
+    #判断敌机是否越界
+    if self.y > 512:
+        return True;
+
+# 随机绘制敌机功能
+def randomEnemy(enemyList, screen, plane):
+  # 以一定的概率来随机输出敌机 0 ~ 49 
+  if random.choice(range(50)) == 10: 
+    enemyList.append(Enemy(screen))
+
+  # 敌机批量绘制移动
+  for em in enemyList:
+    em.display() # 显示
+    # 移动
+    if em.move(plane):
+      enemyList.remove(em)
+
 # 键盘控制
 def key_control(plane):
     # 执行退出操作
@@ -95,13 +134,17 @@ def main():
   # 注：因为涉及到无缝滚动, 所以画布是两张图片拼起来的, 一张图片的高度是 1536 / 2 = 768
   # 创建飞机对象
   plane = Plane(screen)
+  enemyList = [] # 存放敌机的数组
   while True:
       # 绘制画面
       screen.blit(bg, (0,m))
       m += 2 # 不停向下移动
       if m >= -200: # 当移动完一张图片的位置之后，那么重新绘制 -968 + 768 = -200
         m = -968
+      # 显示飞机
       plane.display()
+      # 显示敌机
+      randomEnemy(enemyList, screen, plane)
       # 键盘控制
       key_control(plane)
       # 更新显示
