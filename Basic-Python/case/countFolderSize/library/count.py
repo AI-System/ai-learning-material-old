@@ -13,5 +13,6 @@ def count(total, path):
       total += os.path.getsize(file)
     ## 判断是否是目录
     if os.path.isdir(file):
+      print('file folder: ', file)
       count(total, file) # 递归
   return total
