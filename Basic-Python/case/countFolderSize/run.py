@@ -1,4 +1,4 @@
-from lib.count import count
+from library.count import count
 
 total = 0 # 初始化总大小
 total = count(total, './test')
