@@ -86,8 +86,11 @@ class Enemy:
     for b in plane.bullet_list:
         if b.x > self.x + 12 and b.x < self.x + 92 and b.y > self.y + 20 and b.y < self.y + 60:
             plane.bullet_list.remove(b) # 当前敌机删除
-            # 随即执行爆炸效果
-            Blast(self.screen, self.x + 26, self.y).animate() # 执行动画时有卡顿
+            # 随即执行爆炸效果 此处能做异步操作吗?
+            # 方案一：使用多线程
+            # 方案二：像是 js中的定时器一样的异步延迟，不阻塞的方式
+            # 待解决
+            Blast(self.screen, self.x + 26, self.y).animate() # 执行动画时有卡顿 阻塞
             return True
 
     #判断敌机是否越界
