@@ -86,11 +86,38 @@ class Enemy:
     for b in plane.bullet_list:
         if b.x > self.x + 12 and b.x < self.x + 92 and b.y > self.y + 20 and b.y < self.y + 60:
             plane.bullet_list.remove(b) # 当前敌机删除
+            # 随即执行爆炸效果
+            Blast(self.screen, self.x + 26, self.y).animate() # 执行动画时有卡顿
             return True
+
     #判断敌机是否越界
     if self.y > 512:
         return True;
 
+# 创建爆炸💥类
+class Blast:
+  def __init__(self, screen, x, y):
+    self.x = x
+    self.y = y
+    self.screen = screen
+    self.num = 1
+    self.image = pygame.image.load("./images/bomb1.png")
+
+  # 子弹显示
+  def display(self):
+    self.screen.blit(self.image, (self.x, self.y))
+
+  # 爆炸动画
+  def animate(self):
+    while self.num <= 4:
+      curImage = "./images/bomb" + str(self.num) + ".png"
+      # print('curImage: ', curImage)
+      self.image = pygame.image.load(curImage)
+      # 显示自己
+      self.display()
+      self.num += 1
+      time.sleep(0.03)
+    
 # 随机绘制敌机功能
 def randomEnemy(enemyList, screen, plane):
   # 以一定的概率来随机输出敌机 0 ~ 49 
@@ -135,6 +162,7 @@ def main():
   # 创建飞机对象
   plane = Plane(screen)
   enemyList = [] # 存放敌机的数组
+  blastList = [] # 存放爆炸的数组
   while True:
       # 绘制画面
       screen.blit(bg, (0,m))
