@@ -1,9 +1,9 @@
 操作说明
 ---
 
-练习sql案例
+练习sql案例, 在命令行模式下登录MySQL数据库，使用SQL语句
 
-### 在命令行模式下登录MySQL数据库，使用SQL语句
+### 第一部分
 
 - 创建留言数据库: blogdb;
 
@@ -69,3 +69,46 @@ insert into blog values(null, 'title1', 'abstract1', 'content1', 1, 10, 0, '2019
 ```
 
 - 最后将blogdb数据库中的信息导出，并以blogdb.sql文件存储，具体查看文件内容
+
+### 第二部分
+
+- 在users表中查询注册时间最早的十条会员信息
+
+```sql
+# 默认按升序asc(可不写), desc是降序排列
+select * from users order by cdate limit 10;
+# 或如下方式，加asc关键字
+select * from users order by cdate asc limit 10;
+```
+
+- 从两个表中查询点赞数最高的5条博客信息，要求显示字段：（博文id，标题，点赞数，会员名） 
+
+```sql
+select blog.id as bid, title, pcount, users.name as username from users left join blog on blog.uid = users.id order by pcount desc limit 5;
+```
+
+- 统计每个会员的发表博文数量（降序），要求显示字段（会员id号，姓名，博文数量）
+
+```sql
+select users.id as uid, name, blog.pcount from users left join blog on blog.uid = users.id order by pcount desc limit 5;
+```
+
+- 获取会员的博文平均点赞数量最高的三位。显示字段（会员id，姓名，平均点赞数）
+
+```sql
+select users.id as uid,name, avg(pcount) as avg_pcount from blog, users where users.id = blog.uid group by uid order by avg_pcount desc limit 3;
+```
+
+- 删除没有发表博文的所有会员信息
+
+```sql
+delete from users where id not in(select uid from blog);
+```
+
+### 第三部分
+
+- 使用自定义的数据库操作类，实现一个自动取款机的存取款模拟效果
+
+- 要求有登陆和退出、查询余额、取钱，存钱等操作，账户信息存储到数据库中
+
+- 正在开发中, 请稍后浏览... 解决方案点击[这里](./db-model)
