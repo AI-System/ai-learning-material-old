@@ -20,7 +20,7 @@ try:
     db.commit()
     print('成功添加条数：', cursor.rowcount)
 except Exception as err:
-    # 执行出粗，事务回滚
+    # 执行出错，事务回滚
     db.rollback()
     print('SQL执行错误!', err)
 
