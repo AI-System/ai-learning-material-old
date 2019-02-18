@@ -22,8 +22,7 @@ create table users(
 	id int unsigned not null auto_increment primary key,
 	name varchar(32) not null unique,
 	email varchar(100) default null,
-	cdate datetime default null,
-	classid char(8)
+	cdate datetime default null
 );
 ```
 
@@ -46,11 +45,11 @@ create table blog(
 
 ```sql
 # 批量添加数据 注意这里的 values 和 value
-insert into users values(null, 'p1', 'p1@qq.com', '2019-2-1 11:11', 'python-1'), 
-(null, 'p2', 'p2@qq.com', '2019-2-2 11:11', 'python-2'),
-(null, 'p3', 'p3@qq.com', '2019-2-3 11:11', 'python-3'),
-(null, 'p4', 'p4@qq.com', '2019-2-4 11:11', 'python-4'),
-(null, 'p5', 'p5@qq.com', '2019-2-5 11:11', 'python-5');
+insert into users value(null, 'p1', 'p1@qq.com', '2019-2-1 11:11'), 
+(null, 'p2', 'p2@qq.com', '2019-2-2 11:11'),
+(null, 'p3', 'p3@qq.com', '2019-2-3 11:11'),
+(null, 'p4', 'p4@qq.com', '2019-2-4 11:11'),
+(null, 'p5', 'p5@qq.com', '2019-2-5 11:11');
 ```
 
 - 在blog博文信息表中添加>=10条的测试数据
