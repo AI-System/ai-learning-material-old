@@ -13,7 +13,7 @@ create database if not exists blogdb;
 
 - 在blogdb数据库中创建会员表users和博客文章表blog，结构如下
 
-<img src='screenshoot/sql1.png' width='500' />
+<img src='screenshoot/sql1.png' width='700' />
 
 创建会员表users
 
