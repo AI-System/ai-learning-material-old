@@ -5,7 +5,7 @@
 
 - [百度糯米官网(旧版)](https://github.com/johnnynode/nuomi)
 - [穿越火线官网(旧版)](https://github.com/johnnynode/crossfire)
-- [生日快乐动画](https://github.com/johnnynode/birthday)
+- [生日快乐蛋糕动画](https://github.com/johnnynode/birthday)
 
 ### 穿越火线项目使用说明
 
