@@ -7,16 +7,16 @@
 - [穿越火线官网(旧版)](https://github.com/johnnynode/crossfire)
 - [生日快乐动画](https://github.com/johnnynode/birthday)
 
-### 穿越火线项目使用说明
-
-- 项目有两个分支，master和jquery分支
-- 点击页面内的 **jQuery 版本** 链接跳转到jquery分支 或直接点击 [这里](https://github.com/johnnynode/crossfire/tree/jquery)
-- 按照页面内的README文件操作
-
 ### 百度糯米项目使用说明
 
 - 项目有两个分支，master和jquery分支
 - 点击页面内的 **jQuery 版本** 链接跳转到jquery分支 或直接点击 [这里](https://github.com/johnnynode/nuomi/tree/jquery)
+- 按照页面内的README文件操作
+
+### 穿越火线项目使用说明
+
+- 项目有两个分支，master和jquery分支
+- 点击页面内的 **jQuery 版本** 链接跳转到jquery分支 或直接点击 [这里](https://github.com/johnnynode/crossfire/tree/jquery)
 - 按照页面内的README文件操作
 
 ### 生日快乐动画项目使用说明
