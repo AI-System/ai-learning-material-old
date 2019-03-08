@@ -6,6 +6,12 @@ AI-LEARNING-MATERIAL
 - [Control-flow](./Basic-Python/2.control-flow.md)
 - [Functions](./Basic-Python/3.functions.md)
 - [Scripting](./Basic-Python/4.scripting.md)
+- [Oop](./Basic-Python/5.oop.md)
+- [Exception](./Basic-Python/6.exception.md)
+- [Magic Method](./Basic-Python/7.magic-method.md)
+- [Method Property](./Basic-Python/8.method&property.md)
+- [Import](./Basic-Python/9.import.md)
+- [Os File](./Basic-Python/10.os&file.md)
 
 ### Advanced Python
 
