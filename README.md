@@ -17,7 +17,10 @@ AI-LEARNING-MATERIAL
 
 
 ### Projects
-- [RobotController](https://github.com/AI-System/AI-LEARNING-MATERIAL/tree/master/Projects/RobotController/README.md)
+- [RobotController](./Projects/RobotController/README.md)
+- [LinearAlgebra](./Projects/LinearAlgebra/README.md)
+- [MovieDataset](./Projects/MovieDataset/README.md)
+- [ImageClassifier](./Projects/ImageClassifier/README.md)
 
 ### License
 [MIT](https://github.com/AI-System/AI-LEARNING-MATERIAL/blob/master/LICENSE)
